@@ -14,13 +14,23 @@ function initializePage() {
 	// $('#colorBtn').click(randomizeColors);
 }
 
+function callBack() {
+
+}
+
 /*
  * Make an AJAX call to retrieve project details and add it in
  */
+ $("a").click(function() {
+ 	e.preventDefault();
+ 	var projectID = $(this).closest('.project').attr('id');
+ 	addProjectDetails(projectID);
+ })
 function addProjectDetails(e) {
 	// Prevent following the link
 	e.preventDefault();
-
+	$.get("http://localhost:3000/project/{{e}}", callBack);
+	//$.get("http://URL", callBackFn)
 	// Get the div ID, e.g., "project3"
 	var projectID = $(this).closest('.project').attr('id');
 	// get rid of 'project' from the front of the id 'project3'
